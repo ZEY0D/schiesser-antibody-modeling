@@ -47,7 +47,6 @@ These studies validate the effectiveness of using PINNs for biomedical PDEs, esp
 
 ## 🔧 How to Run This Project
 
-1. Clone this repository:
    ```bash
    git clone https://github.com/ZEY0D/schiesser-antibody-modeling.git
    cd schiesser-antibody-modeling
