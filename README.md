@@ -10,26 +10,42 @@ We reproduce and extend the results from **Chapter 2 of _Schiesser – PDE – M
 ---
 
 ## 🧠 Problem Formulation
+We solve a coupled PDE-ODE system modeling the binding kinetics of free analyte (e.g., antibodies) diffusing in a fluid and binding to receptors on a sensor surface.
 
-We solve the following **partial differential equation (PDE)** for the concentration \( c(z,t) \) of free analyte (e.g. antibodies):
+Governing PDE (Diffusion of Free Analyte c(z,t))
+∂c/∂t = D ∂²c/∂z²
 
-\[
-\frac{\partial c}{\partial t} = D \frac{\partial^2 c}{\partial z^2}
-\]
+This describes the one-dimensional diffusion of the free analyte in a domain of length L.
 
-With boundary and initial conditions:
-- **Initial condition:** \( c(z,0) = 1 \)
-- **Dirichlet boundary (z = 1):** \( c(1,t) = 1 \)
-- **Surface reaction (z = 0):**
-  \[
-  D \frac{\partial c}{\partial z}(0,t) = k_f c(0,t)(c_{\text{sat}} - c_b(t)) - k_r c_b(t)
-  \]
+Initial and Boundary Conditions
+Initial Condition:
+c(z, 0) = 1
+(Initial concentration is uniform throughout the domain)
 
-Where \( c_b(t) \) is the **bound surface complex**, and is solved as a separate ODE:
-\[
-\frac{d c_b}{dt} = k_f c(0,t)(c_{\text{sat}} - c_b(t)) - k_r c_b(t)
-\]
----
+Dirichlet Boundary Condition at z = 1 (top boundary):
+c(1, t) = 1
+(Maintains the analyte concentration at the top boundary at a constant bulk value)
+
+Reactive Boundary Condition at z = 0 (sensor surface):
+D ∂c/∂z (0, t) = kf * c(0, t) * (csat - cb(t)) - kr * cb(t)
+(Models the binding reaction flux at the surface)
+
+Here:
+
+c(z,t) is the free analyte concentration in the fluid
+
+cb(t) is the surface-bound complex concentration
+
+csat is the saturation value of cb
+
+kf and kr are the forward and reverse rate constants
+
+D is the diffusion coefficient
+
+Coupled ODE (Surface Reaction Kinetics)
+dc_b/dt = kf * c(0, t) * (csat - cb(t)) - kr * cb(t)
+
+This ODE governs the time evolution of the surface-bound complex cb(t), driven by the analyte concentration at the surface (z = 0)
 
 ## 📚 Literature Review
 
