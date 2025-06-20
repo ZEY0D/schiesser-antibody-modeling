@@ -1,11 +1,23 @@
 # 🧪 Antibody Binding Kinetics — SBE2250 Course Project (Spring 2025)
 ## 📌 Project Overview
+The goal of this project is to model and simulate the kinetics of antibody-antigen binding in a flow chamber using a combination of traditional numerical schemes and modern machine learning techniques. This project reproduces and extends the results from Chapter 2 of Schiesser – PDE – MATLAB – 2013, which models the spatial-temporal concentration of free antibodies undergoing diffusion in a fluid and binding to a sensor surface.
 
-The goal of this project is to model and simulate the **kinetics of antibody-antigen binding** in a flow chamber using:
-- 🧮 **Numerical methods** (Finite Difference - Crank Nicolson - Runge-Kutta)
-- 🤖 **Machine Learning methods** (Physics-Informed Neural Networks - PINNs)
+Methods Used:
+🧮 Numerical Methods
 
-We reproduce and extend the results from **Chapter 2 of _Schiesser – PDE – MATLAB – 2013_**, which models the spatial-temporal concentration of antibodies undergoing **diffusion** and **surface reaction binding**.
+Finite Difference Method (FDM)
+A classic discretization technique that approximates derivatives by differences over a grid. It was used to convert the PDE into a system of algebraic equations across time and space.
+
+Crank-Nicolson Method
+A time-stepping scheme that is implicit and unconditionally stable. It combines the forward and backward Euler methods, providing second-order accuracy in both time and space for solving the diffusion PDE.
+
+Runge-Kutta Method
+A family of iterative methods for solving ordinary differential equations (ODEs). In this project, we used the classical 4th-order Runge-Kutta (RK4) to solve the ODE for surface-bound complex concentration cb(t).
+
+🤖 Machine Learning Method
+
+Physics-Informed Neural Networks (PINNs)
+A neural network approach that incorporates the physical laws (PDEs and ODEs) directly into the loss function of the model. By enforcing the governing equations, boundary conditions, and initial conditions during training, PINNs can learn continuous solutions without traditional discretization. This method enables flexible modeling with fewer grid limitations and potential for better generalization in inverse and forward problems.
 
 ---
 
